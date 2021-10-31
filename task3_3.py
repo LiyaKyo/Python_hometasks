@@ -7,5 +7,32 @@
 #     "М": ["Мария"], "П": ["Петр"]
 # }
 
+def thesaurus(names):
+    d = {}
+    char_names = []
+    for name in names:
+        first_char = name[0]
+        if d.get(first_char):
+            char_names = d[first_char]
+            char_names.append(name)
+            d[first_char] = char_names
+        else:
+            d[first_char] = [name]
+    return d
+
 names = input().split(' ')
-print(names)
+print(thesaurus(names))
+
+
+# Подумайте: полезен ли будет вам оператор распаковки?
+#   --  Наверно полезен, но в данной реализации я не могу придумать как его внедрить(
+
+# Как поступить, если потребуется сортировка по ключам?
+#   --  Нашла такую реализацию, но как правильно не знаю, примеров реализации сортировки
+#   словаря очень много и некоторые не поняла
+#   >> a = {2:3, 1:89, 4:5, 3:0}
+#   >> c = {i:a[i] for i in sorted(a.keys())}
+#   >> print(c)
+
+
+# Можно ли использовать словарь в этом случае?
